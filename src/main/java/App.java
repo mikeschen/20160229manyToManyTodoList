@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -47,6 +46,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
       Category category = Category.find(id);
+      System.out.println(category.getTasks());
       model.put("category", category);
       model.put("allTasks", Task.all());
       model.put("template", "templates/category.vtl");
@@ -57,7 +57,8 @@ public class App {
     post("/tasks", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
-      Task newTask = new Task(name);
+      String duedate = request.queryParams("duedate");
+      Task newTask = new Task(name, duedate);
       newTask.save();
       response.redirect("/tasks");
       return null;
@@ -77,7 +78,9 @@ public class App {
       int categoryId = Integer.parseInt(request.queryParams("category_id"));
       Category category = Category.find(categoryId);
       Task task = Task.find(taskId);
-      category.addTask(task);
+      if(!(category.getTasks().contains(task))) {
+        category.addTask(task);
+      }
       response.redirect("/categories/" + categoryId);
       return null;
     });

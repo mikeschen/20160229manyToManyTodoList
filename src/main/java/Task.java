@@ -5,6 +5,7 @@ public class Task {
   private int id;
   private String name;
   private boolean isdone = false;
+  private String duedate;
 
   public int getId() {
     return id;
@@ -14,12 +15,17 @@ public class Task {
     return isdone;
   }
 
+  public String getDuedate() {
+    return duedate;
+  }
+
   public String getName() {
     return name;
   }
 
-  public Task(String name) {
+  public Task(String name, String duedate) {
     this.name = name;
+    this.duedate = duedate;
   }
 
   @Override
@@ -34,7 +40,7 @@ public class Task {
   }
 
   public static List<Task> all() {
-    String sql = "SELECT id, name FROM tasks";
+    String sql = "SELECT * FROM tasks ORDER BY duedate ASC";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Task.class);
     }
@@ -42,9 +48,10 @@ public class Task {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO tasks(name) VALUES (:name)";
+      String sql = "INSERT INTO tasks(name, duedate) VALUES (:name, :duedate)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", name)
+        .addParameter("duedate", duedate)
         .executeUpdate()
         .getKey();
     }

@@ -5,12 +5,13 @@
 <form action="/tasks" method="post">
   <label for="name">Task Description</label>
   <input id="name" name="name" type="text">
-
+  <label for"duedate">Enter A Due Date</label>
+  <input id="duedate" name="duedate" type="date">
   <button type="submit">Add Task</button>
 </form>
 
 #foreach ($task in $tasks)
-  <li><a href="/tasks/$task.getId()">$task.getName()</a></li>
+  <li><a href="/tasks/$task.getId()">$task.getName()</a> $task.getDuedate()</li>
 #end
 
 <p><a href="/">Home</a></p>

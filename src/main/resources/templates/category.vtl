@@ -23,7 +23,7 @@
     <label for="task_id">Select a task</label>
     <select id='task_id' name='task_id' type='text'>
       #foreach($task in $allTasks)
-        <option value="$task.getId()"> $task.getName() </option>
+          <option value="$task.getId()"> $task.getName() </option>
       #end
     </select>
     <button type='submit'>Add task</button>
