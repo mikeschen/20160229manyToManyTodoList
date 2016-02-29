@@ -2,7 +2,7 @@
 
 <p>Add a new category:</p>
 
-<form action="/categories" method="post">
+<form action="/$user.getId()/categories" method="post">
   <label for="name">Task Description</label>
   <input id="name" name="name" type="text">
 
@@ -10,7 +10,7 @@
 </form>
 
 #foreach ($category in $categories)
-  <li><a href="/categories/$category.getId()">$category.getName()</a></li>
+  <li><a href="/$user.getId()/categories/$category.getId()">$category.getName()</a></li>
 #end
 
-<p><a href='/'>Home</a></p>
+<p><a href='/home'>Home</a></p>

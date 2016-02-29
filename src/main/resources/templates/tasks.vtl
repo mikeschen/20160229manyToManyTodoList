@@ -2,7 +2,7 @@
 
 <p>Add a new task:</p>
 
-<form action="/tasks" method="post">
+<form action="/$user.getId()/tasks" method="post">
   <label for="name">Task Description</label>
   <input id="name" name="name" type="text">
   <label for"duedate">Enter A Due Date</label>
@@ -11,7 +11,14 @@
 </form>
 
 #foreach ($task in $tasks)
-  <li><a href="/tasks/$task.getId()">$task.getName()</a> $task.getDuedate()</li>
+  #if($task.getisdone())
+    <li><s>$task.getName()</s></li>
+  #else
+    <li><a href="/$user.getId()/tasks/$task.getId()">$task.getName() $task.getDuedate()</a></li>
+    <form action="/$user.getId()/tasks/$task.getId()/done" method="post">
+    <button type="submit">Task Done</button>
+    </form>
+  #end
 #end
 
-<p><a href="/">Home</a></p>
+<p><a href="/home">Home</a></p>

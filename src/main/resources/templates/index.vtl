@@ -1,4 +1,19 @@
 <h1>Welcome to To Do List</h1>
 
-<h3><a href="/categories">Add or view a category</a></h3>
-<h3><a href="/tasks">Add or view a task</a></h3>
+<h2>Returning Users</h2>
+<form action='/home' method='post'>
+  <label for="loginUsername">Enter a Username</label>
+  <input id="loginUsername" name="loginUsername" type="text">
+  <label for="loginPassword">Enter a Password</label>
+  <input id="loginPassword" name="loginPassword" type="text">
+  <button type='submit'>Login</button>
+</form>
+
+<h2>New User Sign-Up</h2>
+<form action='/' method='post'>
+  <label for="username">Enter a Username</label>
+  <input id="username" name="username" type="text">
+  <label for="password">Enter a Password</label>
+  <input id="password" name="password" type="text">
+  <button type='submit'>Add User</button>
+</form>

@@ -40,7 +40,7 @@ public class CategoryTest {
     Category myCategory = new Category("Household chores");
     myCategory.save();
 
-    Task myTask = new Task("Mow the Lawn");
+    Task myTask = new Task("Mow the Lawn", "1234-12-12");
     myTask.save();
 
     myCategory.addTask(myTask);
@@ -53,7 +53,7 @@ public class CategoryTest {
     Category myCategory = new Category("Household chores");
     myCategory.save();
 
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", "1234-12-12");
     myTask.save();
 
     myCategory.addTask(myTask);
@@ -66,7 +66,7 @@ public class CategoryTest {
     Category myCategory = new Category("Household chores");
     myCategory.save();
 
-    Task myTask = new Task("Mow the lawn");
+    Task myTask = new Task("Mow the lawn", "1234-12-12");
     myTask.save();
 
     myCategory.addTask(myTask);

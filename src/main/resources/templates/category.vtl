@@ -8,7 +8,7 @@
         <s><li>$task.getName()</li></s>
       #else
         <li>$task.getName()</li>
-      <form action="/categories/$category.getId()/$task.getId()/done" method="post">
+      <form action="/$user.getId()/categories/$category.getId()/$task.getId()/done" method="post">
         <button type="submit">Task Done</button>
       </form>
       #end
@@ -18,7 +18,7 @@
 
 <h4>Add a task to this category:</h4>
 
-<form action='/add_tasks' method='post'>
+<form action='/$user.getId()/add_tasks' method='post'>
     <input id="category_id" name="category_id" type="hidden" value="$category.getId()">
     <label for="task_id">Select a task</label>
     <select id='task_id' name='task_id' type='text'>
@@ -29,6 +29,6 @@
     <button type='submit'>Add task</button>
 </form>
 
-<p><a href="/categories/$category.getId()/edit">Edit this category</a></p>
+<p><a href="/$user.getId()/categories/$category.getId()/edit">Edit this category</a></p>
 
-<p><a href='/'>Home</a></p>
+<p><a href='/home'>Home</a></p>
