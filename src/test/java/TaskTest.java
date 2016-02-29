@@ -79,5 +79,15 @@ public class TaskTest {
     myTask.addCategory(myCategory);
     myTask.delete();
     assertEquals(myCategory.getTasks().size(), 0);
-  }   
+  }
+
+  @Test
+  public void done_setsIsDonePropertyToDone() {
+    Task myTask = new Task("Mow the lawn");
+    myTask.save();
+
+    myTask.done();
+
+    assertEquals(Task.find(myTask.getId()).getisdone(), true);
+  }
 }

@@ -4,9 +4,14 @@ import org.sql2o.*;
 public class Task {
   private int id;
   private String name;
+  private boolean isdone = false;
 
   public int getId() {
     return id;
+  }
+
+  public boolean getisdone() {
+    return isdone;
   }
 
   public String getName() {
@@ -80,6 +85,15 @@ public class Task {
           myCategories.add(category);
       }
     return myCategories;
+    }
+  }
+
+  public void done() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE tasks SET isdone = true WHERE id=:id";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
     }
   }
 

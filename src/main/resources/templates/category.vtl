@@ -4,7 +4,14 @@
   <p>Here are the tasks for this category:</p>
   <ul>
     #foreach($task in $category.getTasks())
-      <li>$task.getName()</li>
+      #if($task.getisdone())
+        <s><li>$task.getName()</li></s>
+      #else
+        <li>$task.getName()</li>
+      <form action="/categories/$category.getId()/$task.getId()/done" method="post">
+        <button type="submit">Task Done</button>
+      </form>
+      #end
     #end
   </ul>
 #end

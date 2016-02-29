@@ -92,6 +92,17 @@ public class App {
       return null;
     });
 
+    post("/categories/:id/:taskId/done", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int categoryId = Integer.parseInt(request.params(":id"));
+      int taskId = Integer.parseInt(request.params(":taskId"));
+      Category category = Category.find(categoryId);
+      Task task = Task.find(taskId);
+      task.done();
+      response.redirect("/categories/" + categoryId);
+      return null;
+    });
+
     put("/tasks/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Task task = Task.find(Integer.parseInt(request.params("id")));
