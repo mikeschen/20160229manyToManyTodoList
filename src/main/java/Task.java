@@ -94,7 +94,14 @@ public class Task {
     return myCategories;
     }
   }
-
+  // public List<Category> getCategories() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "SELECT categories.* FROM tasks JOIN tasks_categories ON (tasks.id = tasks_categories.task_id) JOIN categories ON (tasks_categories.catagory_id = categories.id) WHERE task_id=:id";
+  //     return con.createQuery(sql)
+  //       .addParameter("id", id)
+  //       .executeAndFetch(Category.class);
+  //   }
+  // }
   public void done() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE tasks SET isdone = true WHERE id=:id";
